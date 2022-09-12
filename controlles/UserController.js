@@ -100,5 +100,5 @@ export const authMe = async (req, res) => {
 };
 
 export const home = (req, res) => {
-    res.send("HEllo");
+    res.status(200).send("Hello World");
 }

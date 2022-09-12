@@ -8,8 +8,7 @@ export const registerValidation = [
 ];
 export const loginValidation = [
     body("email", "Неверная почта").isEmail(),
-    body("password", "Неверный пароль").isLength({ min: 8, max: 40 }),
-    body("fullName", "Неверно указано имя").isLength({ min: 3, max: 40 }),
+    body("password", "Неверный пароль").isLength({ min: 8, max: 40 })
 ];
 export const postCreateValidation = [
     body("title", "Некорректный заголовок").isLength({ min: 5 }).isString(),
