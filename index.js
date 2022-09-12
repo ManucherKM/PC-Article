@@ -1,9 +1,10 @@
 import express from "express";
 import mongoose from "mongoose";
-import { registerValidation, loginValidation } from "./validator/auth.js";
+import { registerValidation, loginValidation, postCreateValidation } from "./validator/auth.js";
 import checkAuth from "./utils/checkAuth.js"
 import * as UserController from "./controlles/UserController.js";
 import * as PostController from "./controlles/PostController.js"
+
 
 mongoose
     .connect("mongodb+srv://admin:admin123@cluster0.ydbt4tc.mongodb.net/articles?retryWrites=true&w=majority")
@@ -35,9 +36,29 @@ app.post("/auth/register", registerValidation, (req, res) => {
     UserController.register(req, res)
 })
 
-app.post("/post", checkAuth, (req, res) => {
-    PostController.create(req, res)
+
+
+//Посты
+
+app.post("/posts", checkAuth, postCreateValidation, (req, res) => {
+    PostController.createPost(req, res)
 })
+
+// app.delete("/posts", checkAuth, postCreateValidation, (req, res) => {
+//     PostController.deletePost(req, res)
+// })
+
+// app.patch("/posts", checkAuth, postCreateValidation, (req, res) => {
+//     PostController.updatePost(req, res)
+// })
+
+// app.get("/posts", (req, res) => {
+//     PostController.getPost(req, res)
+// })
+
+// app.get("/posts/:id", (req, res) => {
+//     PostController.getOnePost(req, res)
+// })
 
 app.listen(PORT, (err) => {
     if (err) {

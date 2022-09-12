@@ -13,7 +13,7 @@ export const loginValidation = [
 ];
 export const postCreateValidation = [
     body("title", "Некорректный заголовок").isLength({ min: 5 }).isString(),
-    body("text", "Неверный пароль").isLength({ min: 10 }).isString(),
+    body("text", "Некорректный текст статьи").isLength({ min: 10 }).isString(),
     body("tags", "Неверный формат тегов (укажите массив)").optional().isString(),
     body("photoUrl", "Неверная ссылка на изображение").optional().isString(),
 ];
